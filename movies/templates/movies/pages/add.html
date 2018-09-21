@@ -4,10 +4,6 @@
 
 {% block main_content %}
 
-{% if form.errors %}
-	{{form.errors}}
-{% endif %}
-
 <form action="{% url 'movies:add' %}" method="POST">
 	
 	{% csrf_token %}
