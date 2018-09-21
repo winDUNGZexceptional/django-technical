@@ -12,4 +12,7 @@ class AddMovieForm(forms.Form):
 		)
 	director = forms.SlugField(max_length=100)
 
-	date_screened = forms.DateField()
+	date_screened = forms.DateField(
+		widget = forms.widgets.DateInput(format="%m-%d-%Y"),
+		help_text = "MM-DD-YYYY"
+		)

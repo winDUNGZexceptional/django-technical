@@ -2,6 +2,10 @@
 
 {% block main_content %}
 
-
+{% if messages %}
+	{% for message in messages %}
+<div class="alert alert-success text-center">{{ message }}</div>
+	{% endfor %}
+{% endif %}
 
 {% endblock %}

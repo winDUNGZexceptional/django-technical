@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -28,4 +29,5 @@ class AddPage(View):
 
 
 	def post(self, request, *args, **kwargs):
-		return HttpResponseRedirect( reverse('movies:add') )
+		messages.success(request, 'Movie successfully added.')
+		return HttpResponseRedirect( reverse('movies:list') )
