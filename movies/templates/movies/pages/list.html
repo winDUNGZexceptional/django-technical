@@ -8,4 +8,12 @@
 	{% endfor %}
 {% endif %}
 
+{% if movies %}
+<ul>
+	{% for mov in movies %}
+	<a href="{% url 'movies:details' mov.id %}"><li>{{ mov.title }}</li></a>
+	{% endfor %}
+</ul>
+{% endif %}
+
 {% endblock %}

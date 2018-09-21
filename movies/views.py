@@ -16,7 +16,18 @@ class ListPage(View):
 	template_name = 'movies/pages/list.html'
 
 	def get(self, request, *args, **kwargs):
-		return render(request, self.template_name, {})
+		movie_list = Movie.objects.filter(is_active=True)
+		return render(request, self.template_name, {'movies' : movie_list})
+
+
+
+class DetailPage(View):
+	
+	template_name = 'movies/pages/details.html'
+
+	def get(self, request, *args, **kwargs):
+		movie = Movie.objects.filter(id=self.kwargs['movie_id']).first()
+		return render(request, self.template_name, {'movie' : movie})
 
 
 
@@ -30,3 +41,5 @@ class AddPage(CreateView):
 	def get_success_url(self, **kwargs):
 		messages.success(self.request, 'Movie successfully added.')
 		return self.success_url
+
+
