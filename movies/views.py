@@ -1,5 +1,6 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 from django.views import View
 
 from movies.forms import AddMovieForm
@@ -25,3 +26,6 @@ class AddPage(View):
 
 		return render(request, self.template_name, {'form' : form})
 
+
+	def post(self, request, *args, **kwargs):
+		return HttpResponseRedirect( reverse('movies:add') )

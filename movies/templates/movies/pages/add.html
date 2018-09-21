@@ -4,6 +4,20 @@
 
 {% block main_content %}
 
-{{ form|bootstrap }}
+<form action="{% url 'movies:add' %}">
+	
+	{% csrf_token %}
+
+	{{ form.title|bootstrap }}
+
+	{{ form.description|bootstrap }}
+
+	{{ form.director|bootstrap }}
+
+	{{ form.date_screened|bootstrap }}
+
+	<input type="submit" name="submit" value="Submit" class="btn btn-success btn-lg">
+
+</form>
 
 {% endblock %}
